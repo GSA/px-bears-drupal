@@ -43,9 +43,8 @@ composer install --no-interaction --optimize-autoloader
 drush site:install --db-url=mysql://drupal9:drupal9@database/drupal9 -y
 ```
 
-###Import USAgov database
+### Import USAgov database
 
-Download SQL Database
 Safe development database dumps are kept in Google Drive:
 https://drive.google.com/drive/folders/1zVDr7dxzIa3tPsdxCb0FOXNvIFz96dNx?usp=sharing.
 Download and Unzip the respective zip file, for example stage.prod.4564.post-deploy.sql.zip
