@@ -10,7 +10,7 @@ We are committed to making our site accessible to all visitors. Our ongoing acce
 
 ### Get USAgov code
 ```
-git clone git@github.com:GSA/usagov-benefits-eligibility.git poc
+git clone git@github.com:usagov/usagov-2021.git poc
 cd poc`
 ```
 
@@ -20,7 +20,7 @@ rm -rf bin
 ```
 
 ### Start LANDO
-
+For detailed explanation on how Lando works, check out [Lando docs](https://docs.lando.dev/drupal/getting-started.html).
 ```
 Create .lando.yml
 name: poc
@@ -34,11 +34,13 @@ lando ssh
 ```
 
 ### Install Drupal modules
+For detailed explanation on how Composer works, check out [Composer docs](https://getcomposer.org/doc/00-intro.md).
 ```
 composer install --no-interaction --optimize-autoloader
 ```
 
 ### Install Drupal site
+For detailed explanation on how Drush works, check out [Drushdocs](https://www.drush.org/11.x/).
 ```
 drush site:install --db-url=mysql://drupal9:drupal9@database/drupal9 -y
 ```
@@ -46,7 +48,7 @@ drush site:install --db-url=mysql://drupal9:drupal9@database/drupal9 -y
 ### Import USAgov database
 
 Safe development database dumps are kept in Google Drive:
-https://drive.google.com/drive/folders/1zVDr7dxzIa3tPsdxCb0FOXNvIFz96dNx?usp=sharing.
+Please contact the DevOps lead to gain access.
 Download and Unzip the respective zip file, for example stage.prod.4564.post-deploy.sql.zip
 Rename uncompressed .sql file to just usagov.sql, and place it into the root of your repo.
 
