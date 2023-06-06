@@ -20,6 +20,9 @@ class UsagovBearsBlock extends BlockBase {
     $build = [];
     $build['usagov_bears_block'] = [
       '#markup' => '<div id="usagov-bears-app"></div>',
+      '#attached' => array(
+        'library' => array('usagov_bears_block/react_app'),
+      ),
     ];
     return $build;
   }

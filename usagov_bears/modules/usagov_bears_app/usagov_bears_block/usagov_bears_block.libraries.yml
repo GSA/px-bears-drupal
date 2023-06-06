@@ -1,0 +1,6 @@
+react_app:
+  version: VERSION
+  js:
+    js/bears_app.js: {}
+  dependencies:
+    - core/jquery
