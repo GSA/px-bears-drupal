@@ -10,7 +10,8 @@ export async function GETLifeEvent(lifeEvent) {
     const location = window.location.pathname
     lifeEvent = location.substring(location.lastIndexOf('/') + 1)
   }
-  const response = await fetch(`/bears/api/life-event/${lifeEvent}`)
+  const datafile = `/sites/default/files/bears/api/${lifeEvent}.json`
+  const response = await fetch(datafile)
     .then(response => {
       if (response?.ok) {
         return response.json()
