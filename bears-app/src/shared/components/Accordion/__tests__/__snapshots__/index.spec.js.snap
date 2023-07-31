@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion renders a match to the previous snapshot 1`] = `
+<div
+  className="benefit-accordion"
+>
+  <h4
+    className="usa-accordion__heading"
+  >
+    <button
+      aria-expanded={false}
+      className="usa-accordion__button"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="heading"
+      />
+      <br />
+      <span
+        className="sub-heading"
+      />
+      <img
+        alt="a plus icon"
+        src="open.svg"
+      />
+    </button>
+  </h4>
+  <div
+    className="usa-accordion__content usa-prose"
+    hidden={true}
+  >
+    <div />
+  </div>
+</div>
+`;
