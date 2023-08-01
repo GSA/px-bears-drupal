@@ -175,7 +175,7 @@ workflows:
           filters:
             branches:
               only: 
-                - task/add-partial-config-import-to-pipeline
+                - main
 
   create-component-library-workflow:
     jobs:
