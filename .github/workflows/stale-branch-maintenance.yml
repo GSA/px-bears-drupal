@@ -18,7 +18,7 @@ jobs:
     - name: Checkout repository
       run: |
         echo "cloning the repo and initiating the usagov-2021 submodule"
-        git clone -b git@github.com:GSA/px-bears-drupal.git
+        git clone git@github.com:GSA/px-bears-drupal.git
 
     - name: Install github command line tool
       run: |
