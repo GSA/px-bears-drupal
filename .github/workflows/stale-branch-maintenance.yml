@@ -32,9 +32,6 @@ jobs:
 
     - name: Find stale branches
       run: |
-        pwd
-        ls -l
-        cd px-bears-drupal
         # Define the threshold for stale branches (e.g., 30 days)
         STALE_THRESHOLD_DAYS=30
 
