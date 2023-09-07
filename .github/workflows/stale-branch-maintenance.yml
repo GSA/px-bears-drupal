@@ -44,7 +44,7 @@ jobs:
           last_commit_date=$(echo $branch | cut -d ' ' -f 2)
 
           # Calculate the age of the branch in days
-          branch_age=$(( ($(date -d $CURRENT_DATE +%s) - $(date -d $last_commit_date +%s)) / 86400 ))
+          branch_age=$(( ( $(date -d "$CURRENT_DATE" +%s) - $(date -d "$last_commit_date" +%s) ) / 86400 ))
 
           # Check if the branch is stale
           if [ $branch_age -ge $STALE_THRESHOLD_DAYS ]; then
