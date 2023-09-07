@@ -16,7 +16,9 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      run: |
+        echo "cloning the repo and initiating the usagov-2021 submodule"
+        git clone -b "$CIRCLE_BRANCH" "$CIRCLE_REPOSITORY_URL"
 
     - name: Install github command line tool
       run: |
