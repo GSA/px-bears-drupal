@@ -33,7 +33,7 @@ jobs:
     - name: Find stale branches
       run: |
         git pull
-        git checkout main
+        git checkout 381-create-stale-branch-action
         git pull
         bash bin/stale-branch.sh
       env:
