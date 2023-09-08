@@ -47,6 +47,7 @@ jobs:
         while IFS= read -r line; do
             branch_list+=("$line")
         done <<< "$output"
+        echo "branch list is $branch_list"
 
         git fetch --all --prune 
         for branch in "${branch_list[@]}"; do
