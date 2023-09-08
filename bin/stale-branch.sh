@@ -19,10 +19,10 @@ for branch in "${branch_list[@]}"; do
   now=$(date +'%s')
   commit_time=$(git log -1 --date=raw ${branch} | grep ^Date | awk '{print $2}')
   commit_days=$(( (${now} - ${commit_time}) / 86400 ))
-  echo "Branch: $branch_name, Last Commit Date: $commit_days, Age: $branch_age days"
+  echo "Branch: $branch_name, Last Commit Date: $commit_time, Age: $commit_days days"
 
   # Check if the branch is stale
-  if [ ${branch_age} -gt ${STALE_THRESHOLD_DAYS} ]; then
+  if [ ${commit_days} -gt ${STALE_THRESHOLD_DAYS} ]; then
       git switch $branch_name
     # Create a pull request to merge the stale branch into the main branch
       gh pr create --base "main" --title "[Stale Branch] - Please review $branch_name" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! This branch has been stale. Thank you!"
