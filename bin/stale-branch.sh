@@ -1,20 +1,23 @@
 #!/bin/bash
 
 # Define the threshold for stale branches (e.g., 30 days)
-export STALE_THRESHOLD_DAYS=30
+STALE_THRESHOLD_DAYS=30
 
 # Run the git for-each-ref command and save the output to a variable
-output=$(git branch -r |  grep -v "main\|release")
-# Initialize an empty array
-branch_list=()
+output=($(git branch -r |  grep -v "main\|release" | xargs echo -n ))
+# # Initialize an empty array
+# branch_list=()
 
-# Read lines one by one and append them to the array
-while IFS= read -r line; do
-    branch_list+=("$line")
-done <<< "$output"
+# # Read lines one by one and append them to the array
+# while IFS= read -r line; do
+#     branch_list+=("$line")
+# done <<< "$output"
+
+# echo $branch_list
 
 git fetch --all --prune 
-for branch in "${branch_list[@]}"; do
+for branch in "${output[@]}"; do 
+  echo "checking branch: ${branch}"
   now=$(date +'%s')
   commit_time=$(git log -1 --date=raw ${branch} | grep ^Date | awk '{print $2}')
   commit_days=$(( (${now} - ${commit_time}) / 86400 ))
