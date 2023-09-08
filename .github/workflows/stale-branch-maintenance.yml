@@ -32,29 +32,7 @@ jobs:
 
     - name: Find stale branches
       run: |
-        # Define the threshold for stale branches (e.g., 30 days)
-        STALE_THRESHOLD_DAYS=30
-
-        # Get the current date in ISO 8601 format
-        CURRENT_DATE=$(date -I)
-
-        # Loop through all branches in the repository
-        for branch in $(git for-each-ref --format='%(refname:short) %(committerdate:short)' refs/heads/); do
-          branch_name=$(echo $branch | cut -d ' ' -f 1)
-          last_commit_date=$(echo $branch | cut -d ' ' -f 2)T00:00:00  # Add default time
-
-          # Calculate the age of the branch in days
-          branch_age=$(( ( $(date -d "$CURRENT_DATE" +%s) - $(date -d "$last_commit_date" +%s) ) / 86400 ))
-        done
-
-          # Check if the branch is stale
-          if [ $branch_age > $STALE_THRESHOLD_DAYS ]; then
-            # Create a pull request to merge the stale branch into the main branch
-            # You can use the GitHub CLI or API to create the PR here
-            # Example using GitHub CLI:
-            gh pr create --base main --head $branch_name --title "Merge stale branch $branch_name"
-            fi
-          done
+        bash bin/stale-branch.sh
       env:
         GITHUB_TOKEN: '${{ secrets.ADD_TO_PROJECT_PAT }}'
   
