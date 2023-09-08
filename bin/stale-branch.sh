@@ -26,8 +26,8 @@ for branch in "${branch_list[@]}"; do
       git checkout --force $branch 
       current_branch=$(git branch --show-current)
       echo "current branch is $current_branch"
-      git switch $branch 
       echo $branch
+      git pull
     # Create a pull request to merge the stale branch into the main branch
       gh pr create --base "main" --head $branch --title  "[Stale Branch] - Please review $branch" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! This branch has been stale. Thank you!"
       exit 0
