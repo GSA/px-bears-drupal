@@ -12,7 +12,6 @@ branch_list=()
 # Read lines one by one and append them to the array
 while IFS= read -r line; do
     branch_list+=("$line")
-  fi
 done <<< "$output"
 
 git fetch --all --prune 
