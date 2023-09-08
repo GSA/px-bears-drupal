@@ -23,7 +23,7 @@ for branch in "${branch_list[@]}"; do
 
   # Check if the branch is stale
   if [ ${commit_days} -gt ${STALE_THRESHOLD_DAYS} ]; then
-      git checkout --force $branch 
+      git checkout $branch 
       current_branch=$(git branch --show-current)
       echo "current branch is $current_branch"
       echo $branch
