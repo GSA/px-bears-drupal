@@ -7,8 +7,14 @@ export CURRENT_DATE=$(date +%Y-%m-%d)  # Define and set the current date in the 
 # Run the git for-each-ref command and save the output to a variable
 output=$(git for-each-ref --format='%(refname:short) %(committerdate:short)')
 
-# Split the output into an array using newline as the delimiter
-IFS=$'\n' read -r -a branch_list <<< "$output"
+# Initialize an empty array
+branch_list=()
+
+# Read lines one by one and append them to the array
+while IFS= read -r line; do
+  branch_list+=("$line")
+done <<< "$output"
+
 
 echo $branch_list
 for branch in "${branch_list[@]}"; do
