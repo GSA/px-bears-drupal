@@ -17,7 +17,7 @@ while IFS= read -r line; do
   fi
 done <<< "$output"
 
-echo $branch_list
+# echo $branch_list
 for branch in "${branch_list[@]}"; do
   branch_name=$(echo $branch | cut -d ' ' -f 1)
   last_commit_date=$(echo $branch | cut -d ' ' -f 2)
