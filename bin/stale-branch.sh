@@ -5,14 +5,16 @@ export STALE_THRESHOLD_DAYS=30
 
 export CURRENT_DATE=$(date +%Y-%m-%d)  # Define and set the current date in the desired format
 # Run the git for-each-ref command and save the output to a variable
-output=$(git for-each-ref --format='%(refname:short) %(committerdate:short)')
+output=$(git for-each-ref --format='%(refname:short) %(committerdate:short)' refs/remotes/origin/ | sort | uniq)
 
 # Initialize an empty array
 branch_list=()
 
 # Read lines one by one and append them to the array
 while IFS= read -r line; do
-  branch_list+=("$line")
+  if [ "$branch_name" != "main" ] && [ "$branch_name" != "release" ]; then
+    branch_list+=("$line")
+  fi
 done <<< "$output"
 
 echo $branch_list
