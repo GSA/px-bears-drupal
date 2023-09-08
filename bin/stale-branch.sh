@@ -28,7 +28,7 @@ for branch in "${branch_list[@]}"; do
 
   # Check if the branch is stale
   if [ "$branch_age" -gt "$STALE_THRESHOLD_DAYS" ]; then
-      git checkout $branch_name
+      git checkout -b $branch_name
     # Create a pull request to merge the stale branch into the main branch
       gh pr create --base "main" --title "[Stale Branch] - Please review $branch_name" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! This branch has been stale. Thank you!"
       exit 0
