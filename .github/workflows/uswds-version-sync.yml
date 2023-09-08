@@ -30,6 +30,7 @@ jobs:
 
             - name: Run the script
               run: |
+                cd px-bears-drupal
                 pwd
                 ls -l
                 bash check-uswds-version.sh
