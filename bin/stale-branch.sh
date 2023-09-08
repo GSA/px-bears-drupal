@@ -25,11 +25,9 @@ for branch in "${output[@]}"; do
 
   # Check if the branch is stale
   if [ ${commit_days} -gt ${STALE_THRESHOLD_DAYS} ]; then
-      git checkout $branch 
+      # git checkout $branch 
       current_branch=$(git branch --show-current)
       echo "current branch is $current_branch"
-      echo $branch
-      git pull $branch
     # Create a pull request to merge the stale branch into the main branch
       gh pr create --base "main" --head $branch --title  "[Stale Branch] - Please review $branch" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! This branch has been stale. Thank you!"
       exit 0
