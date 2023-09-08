@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Define the threshold for stale branches (e.g., 30 days)
-STALE_THRESHOLD_DAYS=30
+STALE_THRESHOLD_DAYS=60
+
 CURRENT_DATE=$(date +%Y-%m-%d)  # Define and set the current date in the desired format
 branch_list=$(git for-each-ref --format='%(refname:short) %(committerdate:short)' refs/heads/)
 
@@ -18,5 +19,5 @@ done
 # Check if the branch is stale
 if [ $branch_age > $STALE_THRESHOLD_DAYS ]; then
   # Create a pull request to merge the stale branch into the main branch
-    gh pr create --base main --head $branch_name --title "[Stale Branch] - Please review $branch_name" --fill --assignee "@TECH_LEAD"
+    gh pr create --base main --head $branch_name --title "[Stale Branch] - Please review $branch_name" --fill --assignee "@${TECH_LEAD}" --body "Hi @${TECH_LEAD} This PR is ready for your review! Thank you!"
 fi
