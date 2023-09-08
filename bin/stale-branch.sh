@@ -12,8 +12,8 @@ branch_list=()
 
 # Read lines one by one and append them to the array
 while IFS= read -r line; do
-  if [ "$line" != "origin/main" ] && [ "$line" != "origin/release" ]; then
-    branch_list+=("$line")
+  if [ $line != "origin/main" ] && [ $line != "origin/release" ]; then
+    branch_list+=($line)
   fi
 done <<< "$output"
 
