@@ -33,6 +33,7 @@ jobs:
 
     - name: Find stale branches
       run: |
+        git pull
         git branch -r |  grep -v "main\|release"
         # Define the threshold for stale branches (e.g., 30 days)
         export STALE_THRESHOLD_DAYS=30
