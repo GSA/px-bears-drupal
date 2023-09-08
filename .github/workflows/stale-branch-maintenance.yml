@@ -40,6 +40,7 @@ jobs:
         export CURRENT_DATE=$(date +%Y-%m-%d)  # Define and set the current date in the desired format
         # Run the git for-each-ref command and save the output to a variable
         output=$(git branch -r |  grep -v "main\|release")
+        echo "output is $output"
         # Initialize an empty array
         branch_list=()
 
