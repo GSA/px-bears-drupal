@@ -24,8 +24,9 @@ for branch in "${output[@]}"; do
 
   # Check if the branch is stale
   if [ ${commit_days} -gt ${STALE_THRESHOLD_DAYS} ]; then
+      SHA=$(git rev-parse $branch)
       git branch $branch 
-      git checkout --head $branch 
+      git checkout $SHA
       # current_branch=$(git branch --show-current)
       # echo "current branch is $current_branch"
     # Create a pull request to merge the stale branch into the main branch
