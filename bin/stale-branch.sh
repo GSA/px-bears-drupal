@@ -19,5 +19,5 @@ done
 # Check if the branch is stale
 if [ $branch_age > $STALE_THRESHOLD_DAYS ]; then
   # Create a pull request to merge the stale branch into the main branch
-    gh pr create --base main --head $branch_name --title "[Stale Branch] - Please review $branch_name" --fill --assignee "@${TECH_LEAD}" --body "Hi @${TECH_LEAD} This PR is ready for your review! Thank you!"
+    gh pr create --base main --head $branch_name --title "[Stale Branch] - Please review $branch_name" --fill --assignee "${TECH_LEAD}" --body "Hi @${TECH_LEAD} This PR is ready for your review! Thank you!"
 fi
