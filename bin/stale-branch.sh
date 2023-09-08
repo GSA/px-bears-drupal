@@ -5,7 +5,7 @@ export STALE_THRESHOLD_DAYS=30
 
 export CURRENT_DATE=$(date +%Y-%m-%d)  # Define and set the current date in the desired format
 # Run the git for-each-ref command and save the output to a variable
-output=$(git for-each-ref --format='%(refname:short) %(committerdate:short)' refs/heads/ refs/remotes/origin/ | sort | uniq)
+output=$(git for-each-ref --format='%(refname:short) %(committerdate:short)' refs/remotes/origin/ | sort | uniq)
 
 # Initialize an empty array
 branch_list=()
@@ -28,7 +28,9 @@ for branch in "${branch_list[@]}"; do
 
   # Check if the branch is stale
   if [ "$branch_age" -gt "$STALE_THRESHOLD_DAYS" ]; then
+      git checkout $branch_name
     # Create a pull request to merge the stale branch into the main branch
-      gh pr create --base "main" --head $branch_name --title "[Stale Branch] - Please review $branch_name" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! This branch has been stale. Thank you!"
+      gh pr create --base "main" --title "[Stale Branch] - Please review $branch_name" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! This branch has been stale. Thank you!"
+      exit 0
   fi
 done
