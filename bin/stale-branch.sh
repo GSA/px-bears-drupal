@@ -5,7 +5,7 @@ export STALE_THRESHOLD_DAYS=30
 
 export CURRENT_DATE=$(date +%Y-%m-%d)  # Define and set the current date in the desired format
 # Run the git for-each-ref command and save the output to a variable
-output=$(git for-each-ref --format='%(refname:short) %(committerdate:short)' refs/remotes/origin/ | sort | uniq)
+output=$(git for-each-ref --ignore-case ["release", "main"] --format='%(refname:short) %(committerdate:short)' refs/remotes/origin/ | sort | uniq)
 
 # Initialize an empty array
 branch_list=()
