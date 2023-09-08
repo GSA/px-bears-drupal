@@ -35,6 +35,7 @@ jobs:
         bash bin/stale-branch.sh
       env:
         GITHUB_TOKEN: '${{ secrets.ADD_TO_PROJECT_PAT }}'
+        Tech_lead: '${{ vars. TECH_LEAD}}'
   
 # jobs:
 #   stale_branches:
