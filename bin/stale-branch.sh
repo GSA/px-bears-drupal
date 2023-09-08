@@ -3,7 +3,6 @@
 # Define the threshold for stale branches (e.g., 30 days)
 export STALE_THRESHOLD_DAYS=30
 
-export CURRENT_DATE=$(date +%Y-%m-%d)  # Define and set the current date in the desired format
 # Run the git for-each-ref command and save the output to a variable
 output=$(git branch -r |  grep -v "main\|release")
 # Initialize an empty array
