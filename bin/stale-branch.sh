@@ -17,7 +17,6 @@ while IFS= read -r line; do
   fi
 done <<< "$output"
 
-# echo $branch_list
 for branch in "${branch_list[@]}"; do
   branch_name=$(echo $branch | cut -d ' ' -f 1)
   last_commit_date=$(echo $branch | cut -d ' ' -f 2)
@@ -27,10 +26,9 @@ for branch in "${branch_list[@]}"; do
 
   echo "Branch: $branch_name, Last Commit Date: $last_commit_date, Age: $branch_age days"
 
-
   # Check if the branch is stale
   if [ "$branch_age" -gt "$STALE_THRESHOLD_DAYS" ]; then
     # Create a pull request to merge the stale branch into the main branch
-      gh pr create --base "main" --head $branch_name --title "[Stale Branch] - Please review $branch_name" --fill --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! This branch has been stale. Thank you!"
+      gh pr create --base "main" --head $branch_name --title "[Stale Branch] - Please review $branch_name" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! This branch has been stale. Thank you!"
   fi
 done
