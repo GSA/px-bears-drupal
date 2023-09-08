@@ -25,12 +25,13 @@ for branch in "${output[@]}"; do
   # Check if the branch is stale
   if [ ${commit_days} -gt ${STALE_THRESHOLD_DAYS} ]; then
       SHA=$(git rev-parse $branch)
-      git branch $branch 
-      git checkout $SHA
+      # git branch $branch 
+      # git checkout $SHA
       # current_branch=$(git branch --show-current)
       # echo "current branch is $current_branch"
+
     # Create a pull request to merge the stale branch into the main branch
-      gh pr create --title  "[Stale Branch] - Please review $branch" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! This branch has been stale. Thank you!"
+      gh pr create --base "main" --head $SHA--title  "[Stale Branch] - Please review $branch" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! This branch has been stale. Thank you!"
       exit 0
   fi
 done
