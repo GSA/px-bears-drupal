@@ -31,6 +31,7 @@ jobs:
             - name: Run the script
               run: |
                 pwd
+                ls -l
                 bash check-uswds-version.sh
             - name: Create Pull Request
               id: cpr
