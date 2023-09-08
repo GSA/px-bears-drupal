@@ -1,12 +1,17 @@
 #!/bin/bash
 
 # Define the threshold for stale branches (e.g., 30 days)
-STALE_THRESHOLD_DAYS=60
+export STALE_THRESHOLD_DAYS=60
 
-CURRENT_DATE=$(date +%Y-%m-%d)  # Define and set the current date in the desired format
-branch_list=$(git for-each-ref --format='%(refname:short) %(committerdate:short)' refs/heads/)
+export CURRENT_DATE=$(date +%Y-%m-%d)  # Define and set the current date in the desired format
+# Run the git for-each-ref command and save the output to a variable
+output=$(git for-each-ref --format='%(refname:short) %(committerdate:short)' refs/heads/)
+
+# Split the output into an array using newline as the delimiter
+IFS=$'\n' read -r -a branch_list <<< "$output"
+
 echo $branch_list
-for branch in $branch_list; do
+for branch in "${branch_list[@]}"; do
   branch_name=$(echo $branch | cut -d ' ' -f 1)
   last_commit_date=$(echo $branch | cut -d ' ' -f 2)
 
