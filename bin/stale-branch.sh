@@ -1,7 +1,4 @@
 #!/bin/bash
-echo "...."
-gh auth status
-echo "...."
 # Define the threshold for stale branches (e.g., 30 days)
 STALE_THRESHOLD_DAYS=30
 
@@ -28,7 +25,7 @@ for branch in "${output[@]}"; do
   # Check if the branch is stale
   if [ ${commit_days} -gt ${STALE_THRESHOLD_DAYS} ]; then
       git branch $branch 
-      git checkout $branch 
+      git checkout --head $branch 
       # current_branch=$(git branch --show-current)
       # echo "current branch is $current_branch"
     # Create a pull request to merge the stale branch into the main branch
