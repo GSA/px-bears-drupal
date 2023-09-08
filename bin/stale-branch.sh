@@ -6,7 +6,7 @@ STALE_THRESHOLD_DAYS=60
 CURRENT_DATE=$(date +%Y-%m-%d)  # Define and set the current date in the desired format
 branch_list=$(git for-each-ref --format='%(refname:short) %(committerdate:short)' refs/heads/)
 echo $branch_list
-for branch in "$branch_list"; do
+for branch in $(git for-each-ref --format='%(refname:short) %(committerdate:short)' refs/heads/); do
   branch_name=$(echo $branch | cut -d ' ' -f 1)
   last_commit_date=$(echo $branch | cut -d ' ' -f 2)
 
