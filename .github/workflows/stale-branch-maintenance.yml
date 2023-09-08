@@ -32,6 +32,9 @@ jobs:
 
     - name: Find stale branches
       run: |
+        git pull
+        git checkout main
+        git pull
         bash bin/stale-branch.sh
       env:
         GITHUB_TOKEN: '${{ secrets.ADD_TO_PROJECT_PAT }}'
