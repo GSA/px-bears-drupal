@@ -43,7 +43,7 @@ jobs:
             - name: Create Pull Request
               env:
                 GITHUB_TOKEN: ${{ secrets.ADD_TO_PROJECT_PAT }}
-                Tech_lead: ${{ env.TECH_LEAD }}
+                Tech_lead: ${{ vars.TECH_LEAD }}
               uses: peter-evans/create-pull-request@v5
               with:
                 token: ${{ secrets.ADD_TO_PROJECT_PAT }}
