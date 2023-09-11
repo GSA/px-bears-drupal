@@ -48,7 +48,7 @@ jobs:
                 git log | head
                 cd ..
                 pwd
-                git submodule deinit --all --cached
+                git submodule deinit --all
 
 
             # - name: Make changes to pull request
