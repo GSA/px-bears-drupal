@@ -29,7 +29,7 @@ jobs:
                 cd px-bears-drupal
                 git submodule init
                 echo ".............................................................."
-                # git pull --recurse-submodules
+                git pull --recurse-submodules
                 echo "usagov-2021/*" >> .gitignore
 
             # - name: Checkout
@@ -39,6 +39,7 @@ jobs:
               run: |
                 cd px-bears-drupal
                 bash check-uswds-version.sh
+                echo ".............................................................."
                 cd usagov-2021
                 git log | head 
 
