@@ -51,7 +51,6 @@ jobs:
                 committer: GitHub <noreply@github.com>
                 author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
                 signoff: false
-                # branch: "Version Sync"
                 title: '[USDWS Version Sync] Update Version'
                 body: |
                   Update report
@@ -62,5 +61,5 @@ jobs:
                 labels: |
                   USDWS version sync
                   automated pr
-                assignees: ${{ env.TECH_LEAD }}
-                reviewers: ${{ env.TECH_LEAD }}
+                assignees: $TECH_LEAD
+                reviewers: $TECH_LEAD
