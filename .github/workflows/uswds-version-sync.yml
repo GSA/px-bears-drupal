@@ -64,7 +64,7 @@ jobs:
                 git commit -am "testing"
                 git config --global user.name "FatmaBakir"
                 git config --global user.email "fatma.bakir@bixal.com"
-                git config --local -e
+                git commit --amend --reset-author
                 git push origin testing-branch
                 gh pr create  --title  "[USDWS Version Sync] Update Version" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! Thank you!"
 
