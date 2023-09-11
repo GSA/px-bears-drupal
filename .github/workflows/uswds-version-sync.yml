@@ -51,7 +51,7 @@ jobs:
                 committer: GitHub <noreply@github.com>
                 author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
                 signoff: false
-                branch: "Version Sync"
+                # branch: "Version Sync"
                 title: '[USDWS Version Sync] Update Version'
                 body: |
                   Update report
