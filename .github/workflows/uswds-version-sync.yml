@@ -47,6 +47,7 @@ jobs:
                 bash check-uswds-version.sh
                 echo ".............................................................." 
                 git checkout -B create-pull-request/uswds-version-sync
+                git push -u origin create-pull-request/uswds-version-sync
                 gh pr create --title  "[USDWS Version Sync] Update Version" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! Thank you!"
 
 
