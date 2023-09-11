@@ -29,6 +29,7 @@ jobs:
                 cd px-bears-drupal
                 git submodule init
                 echo ".............................................................."
+                git branch
                 git submodule update --recursive
                 git pull
                 echo "usagov-2021/*" >> .gitignore
@@ -42,6 +43,7 @@ jobs:
                 bash check-uswds-version.sh
                 echo ".............................................................."
                 cd usagov-2021
+                git branch --show-current   
                 git log | head 
 
 
