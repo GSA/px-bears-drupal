@@ -34,7 +34,7 @@ jobs:
                 git submodule update --recursive
                 git pull
                 git ls-remote origin  
-                git checkout origin/stage
+                git checkout dev
                 git pull
                 
                 echo "usagov-2021/*" >> .gitignore
