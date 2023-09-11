@@ -49,7 +49,6 @@ jobs:
               env:
                 GITHUB_TOKEN: '${{ secrets.ADD_TO_PROJECT_PAT }}'
               run: |
-                cd px-bears-drupal
                 bash check-uswds-version.sh
                 echo ".............................................................." 
                 touch test.txt
