@@ -30,9 +30,11 @@ jobs:
                 git submodule init
                 echo ".............................................................."
                 git branch
-                git submodule update --recursive
+                git checkout stage
                 git pull
                 echo "usagov-2021/*" >> .gitignore
+                git branch --show-current   
+                git log | head 
 
             # - name: Checkout
             #   uses: actions/checkout@v3
@@ -41,10 +43,7 @@ jobs:
               run: |
                 cd px-bears-drupal
                 bash check-uswds-version.sh
-                echo ".............................................................."
-                cd usagov-2021
-                git branch --show-current   
-                git log | head 
+
 
 
             # - name: Make changes to pull request
