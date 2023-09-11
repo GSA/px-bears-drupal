@@ -37,9 +37,9 @@ jobs:
 
             - name: Checkout
               uses: actions/checkout@v3
-              with:
-                # we need the submodules.
-                submodules: true
+              # with:
+              #   # we need the submodules.
+              #   submodules: true
             - name: Submodule cleanup fix  # Bodge for https://github.com/actions/checkout/issues/358
               run: |
                 git submodule foreach --recursive git clean -ffdx
