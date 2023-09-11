@@ -9,6 +9,7 @@
 
 name: Add comment
 on:
+  workflow_dispatch:
   issues:
     types:
       - labeled

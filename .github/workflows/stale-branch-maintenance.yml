@@ -17,6 +17,21 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+    - name: Stale Branches
+      env:
+      GITHUB_TOKEN: '${{ secrets.ADD_TO_PROJECT_PAT }}'
+      Tech_lead: '${{ vars. TECH_LEAD}}'
+      uses: crs-k/stale-branches@v3.0.0
+      with:
+        repo-token: '${{ secrets.ADD_TO_PROJECT_PAT }}'
+        days-before-stale: 30
+        days-before-delete: 180
+        comment-updates: true
+        max-issues: 20
+        tag-committer: true
+        stale-branch-label: stale branch
+        compare-branches: 'info'
+        branches-filter-regex: '^((?!dependabot))'
 
 
     # - name: Checkout repository
@@ -24,34 +39,18 @@ jobs:
     #     echo "cloning the repo and initiating the usagov-2021 submodule"
     #     git clone git@github.com:GSA/px-bears-drupal.git
 
-    - name: Install github command line tool
-      run: |
-        curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
-        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-        sudo apt update
-        sudo apt install gh
+    # - name: Install github command line tool
+    #   run: |
+    #     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+    #     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+    #     sudo apt update
+    #     sudo apt install gh
 
-    - name: Find stale branches
-      run: |
-        git pull
-        bash bin/stale-branch.sh
-      env:
-        GITHUB_TOKEN: '${{ secrets.ADD_TO_PROJECT_PAT }}'
-        Tech_lead: '${{ vars. TECH_LEAD}}'
+    # - name: Find stale branches
+    #   run: |
+    #     git pull
+    #     bash bin/stale-branch.sh
+    #   env:
+    #     GITHUB_TOKEN: '${{ secrets.ADD_TO_PROJECT_PAT }}'
+    #     Tech_lead: '${{ vars. TECH_LEAD}}'
   
-# jobs:
-#   stale_branches:
-#     runs-on: ubuntu-latest
-#     steps:
-#     - name: Stale Branches
-#       uses: crs-k/stale-branches@v3.0.0
-#       with:
-#         repo-token: '${{ secrets.ADD_TO_PROJECT_PAT }}'
-#         days-before-stale: 120
-#         days-before-delete: 180
-#         comment-updates: true
-#         max-issues: 20
-#         tag-committer: true
-#         stale-branch-label: stale branch
-#         compare-branches: 'info'
-#         branches-filter-regex: '^((?!dependabot))'
