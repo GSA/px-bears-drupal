@@ -40,6 +40,10 @@ jobs:
               with:
                 # we need the submodules.
                 submodules: true
+            - name: Submodule cleanup fix  # Bodge for https://github.com/actions/checkout/issues/358
+              run: |
+                git submodule foreach --recursive git clean -ffdx
+                git submodule foreach --recursive git reset --hard
 
             - name: Run the script
               env:
