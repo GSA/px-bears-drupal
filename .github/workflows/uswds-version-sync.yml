@@ -45,9 +45,7 @@ jobs:
               run: |
                 cd px-bears-drupal
                 bash check-uswds-version.sh
-                echo ".............................................................."
-                cd usagov-2021
-                git branch --show-current   
+                echo ".............................................................." 
                 gh pr create --title  "[USDWS Version Sync] Update Version" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! Thank you!"
 
 
