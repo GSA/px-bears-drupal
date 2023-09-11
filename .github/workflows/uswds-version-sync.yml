@@ -46,10 +46,19 @@ jobs:
                 cd px-bears-drupal
                 bash check-uswds-version.sh
                 echo ".............................................................." 
-                git checkout -B create-pull-request/uswds-version-sync
-                git push -u origin create-pull-request/uswds-version-sync
-                gh pr create --title  "[USDWS Version Sync] Update Version" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! Thank you!"
+                # git checkout -B create-pull-request/uswds-version-sync
+                # git push -u origin create-pull-request/uswds-version-sync
 
+
+            - name: Create pull request
+              env:
+                GITHUB_TOKEN: '${{ secrets.ADD_TO_PROJECT_PAT }}'
+                Tech_lead: ${{ vars.TECH_LEAD }}
+              run: |
+                echo ".............................................................."
+                git branch --show-current  
+                echo ".............................................................."
+                gh pr create --title  "[USDWS Version Sync] Update Version" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! Thank you!"
 
             # - name: Make changes to pull request
             #   run: date +%s > report.txt
