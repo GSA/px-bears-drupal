@@ -29,13 +29,15 @@ jobs:
             #     git submodule init
             #     git pull --recurse-submodules
             #     echo "usagov-2021/*" >> .gitignore
-            
+
             - name: Checkout
               uses: actions/checkout@v3
 
             - name: Run the script
               run: |
-                cd px-bears-drupal
+                pwd
+                ls -l
+                cd px-bears-drupal/px-bears-drupal
                 pwd
                 ls -l
                 bash check-uswds-version.sh
