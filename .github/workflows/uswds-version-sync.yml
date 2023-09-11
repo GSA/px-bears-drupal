@@ -29,7 +29,7 @@ jobs:
                 cd px-bears-drupal
                 git submodule init
                 echo ".............................................................."
-                git pull --recurse-submodules
+                git submodule update --recursive
                 echo "usagov-2021/*" >> .gitignore
 
             # - name: Checkout
