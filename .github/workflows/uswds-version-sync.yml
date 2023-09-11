@@ -47,6 +47,8 @@ jobs:
                 git branch --show-current   
                 git log | head
                 cd ..
+                pwd
+                git rm --cached usagov-2021
 
 
             # - name: Make changes to pull request
