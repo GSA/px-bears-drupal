@@ -30,7 +30,6 @@ jobs:
                 git submodule init
                 echo ".............................................................."
                 git branch
-                git checkout stage
                 git pull
                 echo "usagov-2021/*" >> .gitignore
                 git branch --show-current   
