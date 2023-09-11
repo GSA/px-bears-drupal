@@ -33,7 +33,7 @@ jobs:
                 echo ".............................................................."
                 git submodule update --recursive
                 echo ".............................................................."
-                echo "usagov-2021/*" >> .gitignore
+                # echo "usagov-2021/*" >> .gitignore
 
             # - name: Checkout
             #   uses: actions/checkout@v3
@@ -48,7 +48,7 @@ jobs:
                 git log | head
                 cd ..
                 pwd
-                git rm --cached usagov-2021
+                git submodule deinit
 
 
             # - name: Make changes to pull request
