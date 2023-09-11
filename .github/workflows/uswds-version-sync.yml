@@ -35,6 +35,8 @@ jobs:
 
             - name: Run the script
               run: |
+                cd usagov-2021
+                git log | head 
                 bash check-uswds-version.sh
 
             # - name: Make changes to pull request
