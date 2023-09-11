@@ -25,8 +25,10 @@ jobs:
               run: |
                 echo "cloning the repo and initiating the usagov-2021 submodule"
                 gh repo clone GSA/px-bears-drupal
+                echo ".............................................................."
                 cd px-bears-drupal
                 git submodule init
+                echo ".............................................................."
                 git pull --recurse-submodules
                 echo "usagov-2021/*" >> .gitignore
 
