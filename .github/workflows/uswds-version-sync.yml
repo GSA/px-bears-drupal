@@ -62,7 +62,7 @@ jobs:
                 echo ".............................................................."
                 git checkout -b testing-branch
                 git commit -am "testing"
-                git config --global user.email "fatma.bakir@bixal.com"
+                git config user.email "fatma.bakir@bixal.com"
                 git config user.name "FatmaBakir"
                 git push origin testing-branch
                 gh pr create  --title  "[USDWS Version Sync] Update Version" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! Thank you!"
