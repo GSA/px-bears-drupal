@@ -60,6 +60,9 @@ jobs:
                 echo ".............................................................."
                 git branch --show-current  
                 echo ".............................................................."
+                git checkout -b testing-branch
+                git commit -am "testing"
+                git push origin testing-branch
                 gh pr create  --title  "[USDWS Version Sync] Update Version" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! Thank you!"
 
             # - name: Make changes to pull request
