@@ -30,6 +30,7 @@ jobs:
                 git submodule init
                 echo ".............................................................."
                 git submodule update --recursive
+                git pull
                 echo "usagov-2021/*" >> .gitignore
 
             # - name: Checkout
