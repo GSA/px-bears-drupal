@@ -29,13 +29,10 @@ jobs:
                 cd px-bears-drupal
                 git submodule init
                 echo ".............................................................."
-                git branch
-                git pull
+                git branch --show-current  
+                echo ".............................................................."
                 git submodule update --recursive
-                git pull 
-                git checkout refs/heads/main
-                git pull
-                
+                echo ".............................................................."
                 echo "usagov-2021/*" >> .gitignore
 
             # - name: Checkout
@@ -48,7 +45,8 @@ jobs:
                 echo ".............................................................."
                 cd usagov-2021
                 git branch --show-current   
-                git log | head 
+                git log | head
+                cd ..
 
 
             # - name: Make changes to pull request
