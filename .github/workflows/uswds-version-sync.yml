@@ -12,33 +12,30 @@ jobs:
         environment: ${{ github.head_ref || github.ref_name }}
         steps:    
 
-            # - name: Install github command line tool
-            #   run: |
-            #     curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
-            #     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-            #     sudo apt update
-            #     sudo apt install gh
+            - name: Install github command line tool
+              run: |
+                curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+                echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+                sudo apt update
+                sudo apt install gh
 
-            # - name: Cloning the Repo and initiating the Submodule
-            #   env:
-            #     GITHUB_TOKEN: '${{ secrets.ADD_TO_PROJECT_PAT }}'
-            #   run: |
-            #     echo "cloning the repo and initiating the usagov-2021 submodule"
-            #     gh repo clone GSA/px-bears-drupal
-            #     cd px-bears-drupal
-            #     git submodule init
-            #     git pull --recurse-submodules
-            #     echo "usagov-2021/*" >> .gitignore
+            - name: Cloning the Repo and initiating the Submodule
+              env:
+                GITHUB_TOKEN: '${{ secrets.ADD_TO_PROJECT_PAT }}'
+              run: |
+                echo "cloning the repo and initiating the usagov-2021 submodule"
+                gh repo clone GSA/px-bears-drupal
+                cd px-bears-drupal
+                git submodule init
+                git pull --recurse-submodules
+                echo "usagov-2021/*" >> .gitignore
 
-            - name: Checkout
-              uses: actions/checkout@v3
+            # - name: Checkout
+            #   uses: actions/checkout@v3
 
             - name: Run the script
               run: |
-                cd usagov-2021
-                pwd
-                git branch -a
-                git log | head 
+                cd px-bears-drupal
                 bash check-uswds-version.sh
 
             # - name: Make changes to pull request
