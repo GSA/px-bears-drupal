@@ -35,11 +35,6 @@ jobs:
 
             - name: Run the script
               run: |
-                pwd
-                ls -l
-                cd px-bears-drupal/px-bears-drupal
-                pwd
-                ls -l
                 bash check-uswds-version.sh
 
             # - name: Make changes to pull request
