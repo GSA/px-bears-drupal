@@ -48,6 +48,7 @@ jobs:
                 echo ".............................................................." 
                 # git checkout -B create-pull-request/uswds-version-sync
                 # git push -u origin create-pull-request/uswds-version-sync
+                touch test.txt
 
 
             - name: Create pull request
@@ -59,7 +60,7 @@ jobs:
                 echo ".............................................................."
                 git branch --show-current  
                 echo ".............................................................."
-                gh pr create  --head ${{ github.ref_name }} --title  "[USDWS Version Sync] Update Version" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! Thank you!"
+                gh pr create  --title  "[USDWS Version Sync] Update Version" --assignee "${Tech_lead}" --reviewer "${Tech_lead}" --body "Hi ${Tech_lead} This PR is ready for your review! Thank you!"
 
             # - name: Make changes to pull request
             #   run: date +%s > report.txt
