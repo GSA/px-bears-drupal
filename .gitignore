@@ -53,3 +53,4 @@ web/modules/custom/bixal_uswds_general
 backups/*.sql.gz
 *.Identifier
 *.gz
+usagov-2021/*
