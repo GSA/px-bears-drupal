@@ -187,6 +187,23 @@ class LifeEventController {
   }
 
   /**
+   * Gets life event of given ID.
+   * @param $id
+   * @return \Drupal\node\NodeInterface
+   *   The life event node.
+   */
+  public function getLifeEvent($id) {
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'bears_life_event')
+      ->condition('field_b_id', $id)
+      ->range(0, 1);
+    $node_id = current($query->execute());
+    $service = $this->entityTypeManager->getStorage('node');
+    $node = $service->load($node_id);
+    return $node;
+  }
+
+  /**
    * Gets life event form of given ID.
    * @param $id
    * @return \Drupal\node\NodeInterface
