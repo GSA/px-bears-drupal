@@ -65,7 +65,7 @@ class LifeEventController {
     $this->fileSystem->prepareDirectory($directory, FileSystemInterface:: CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS);
 
     // Get JSON data.
-    $data = new JsonResponse([
+    $data = json_encode([
         'data' => $this->getData($id),
         'method' => 'GET',
         'status' => 200
@@ -75,8 +75,17 @@ class LifeEventController {
     // Write JSON data file.
     $filename = "$directory/$id.json";
     $file = $this->fileRepository->writeData($data, $filename, FileSystemInterface::EXISTS_REPLACE);
-
     $fileUrlString = $this->fileUrlGenerator->generate($filename)->toString();
+
+    // Assign the file to JSON data file field of life event of given ID.
+    $life_event = $this->getLifeEvent($id);
+    if ($life_event) {
+      $life_event->set('field_json_data_file', [
+        'target_id' => $file->id(),
+      ]);
+      $life_event->save();
+    }
+
     return new JsonResponse([
         'data' => "Saved JSON data to " . $fileUrlString,
         'method' => 'GET',
