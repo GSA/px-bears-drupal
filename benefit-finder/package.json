@@ -65,7 +65,9 @@
     "generate:component": "plop",
     "prebuild:storybook": "npm run test:generate-output",
     "dev:storybook": "npm run prebuild:storybook && storybook dev -p 6006",
-    "build:storybook": "npm run prebuild:storybook && storybook build"
+    "build:storybook": "npm run prebuild:storybook && storybook build",
+    "dev:audit": "npm audit --json | npm-audit-html --output=audits/npm-audit.html",
+    "prod:audit": "npm audit --only=prod --json | npm-audit-html --output=audits/npm-audit-prod.html"
   },
   "browserslist": {
     "production": [
