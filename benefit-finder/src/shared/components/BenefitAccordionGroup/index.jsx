@@ -35,6 +35,21 @@ const BenefitAccordionGroup = ({
     additionalDescription,
   } = benefitAccordion
   const { closedState, openState } = benefitAccordionGroup
+
+  // debugger
+  if (
+    window.location.hostname === 'bears-waf.app.cloud.gov' ||
+    window.location.hostname === 'localhost'
+  ) {
+    console.log(data && data.length > 0 && { benefitEligibility: data })
+    // data &&
+    //   data.forEach(item => {
+    //     console.log('---')
+    //     console.log(item.benefit.title)
+    //     console.table(item.benefit.eligibility)
+    //     console.log('---')
+    //   })
+  }
   /**
    * a hook that hanldes our open state of the accordions in our group
    * @function

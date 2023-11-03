@@ -6,6 +6,19 @@
  * @return {string} returns a uri with the urlParameters
  */
 const buildURIParameter = (uri, data) => {
+  if (
+    window.location.hostname === 'bears-waf.app.cloud.gov' ||
+    window.location.hostname === 'localhost'
+  ) {
+    console.log(data && data.length > 0 && { selectedValues: data })
+    // data &&
+    //   data.forEach(item => {
+    //     console.log('---')
+    //     console.log(item.criteriaKey)
+    //     console.table(item.values)
+    //     console.log('---')
+    //   })
+  }
   const uriArray =
     data &&
     data.map(item => {
