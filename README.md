@@ -1,7 +1,7 @@
 # [Archive Notice]
 ### As of 01.09.2024, this repository is no longer actively maintained and has been archived. The code is preserved in its current state for historical purposes and can be viewed or forked, but no further updates or changes will be made.
 
-### If you're looking for a replacement for this project, consider checking out [px-benefit-finder](https://github.com/GSA/px-benefit-finder).
+### You may consider checking out [px-benefit-finder](https://github.com/GSA/px-benefit-finder) for further development on this project.
 
 
 
